@@ -13,9 +13,9 @@ class UserSerializer(serializers.ModelSerializer):
     def create(self, validated_data):
         user = User(
             email=validated_data['email'],
-            role=validated_data.get('role', 'candidate')  # Default role candidate rakha
+            role=validated_data.get('role', 'candidate')  
         )
-        user.set_password(validated_data['password'])  # Password ko hash karna
+        user.set_password(validated_data['password'])  
         user.save()
         return user
             

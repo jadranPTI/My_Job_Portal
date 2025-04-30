@@ -32,12 +32,12 @@ class CustomUserManager(BaseUserManager):
         return self.create_user(email, password, **extra_fields)
 
 class CustomUser(AbstractUser):
-    username = None  # Important: Disables username
+    username = None  
     email = models.EmailField(unique=True)
     role = models.CharField(choices=USER_ROLES, max_length=20, default='candidate')
     
-    USERNAME_FIELD = 'email'  # Login with email
-    REQUIRED_FIELDS = ['role']  # No 'username' here
+    USERNAME_FIELD = 'email'  
+    REQUIRED_FIELDS = ['role']  
 
     objects = CustomUserManager()
 
@@ -64,7 +64,7 @@ class Job(models.Model):
     posted_by = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name="posted_jobs")
     # position = models.CharField(max_length=100, default="")
     created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField(auto_now=True)  # Fixed this field
+    updated_at = models.DateTimeField(auto_now=True)  
 
     def __str__(self):
         return f"{self.title} - {self.company}"

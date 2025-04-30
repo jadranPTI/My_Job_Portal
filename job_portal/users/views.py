@@ -41,7 +41,7 @@ class RegisterUserView(generics.CreateAPIView):
     # permission_classes = [AllowAny]
 
     def perform_create(self, serializer):
-        serializer.save()  # Serializer ka create method password hash karega
+        serializer.save()  
 
 class LoginView(APIView):
     # permission_classes = [AllowAny]
